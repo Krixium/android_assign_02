@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Wang_Xia</string>
+
+    <string-array name="regionsArray">
+        <item>Africa</item>
+        <item>Americas</item>
+        <item>Asia</item>
+        <item>Europe</item>
+        <item>Oceania</item>
+    </string-array>
+
+    <!--EXTRA NAMES-->
+    <string name="countriesExtra">countries</string>
+    <string name="countryDetailExtra">countryDetails</string>
+    <string name="countryBordersExtra">countryBorders</string>
+
+    <!--API CALLS-->
+    <string name="regionApiLocale">https://restcountries.eu/rest/v2/region/%s</string>
+    <string name="countryApiLocale">https://restcountries.eu/rest/v2/name/%s?fullText=true</string>
 </resources>

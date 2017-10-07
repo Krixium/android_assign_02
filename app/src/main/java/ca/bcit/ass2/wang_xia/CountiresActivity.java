@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,35 +19,31 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity extends AppCompatActivity {
+public class CountiresActivity extends AppCompatActivity {
 
-    private String urlString;
+    ListView listView;
 
-    // TODO: Make code easier to read (Benny)
+    // TODO: Make easier to read (Benny)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_countires);
 
-        List<String> regionsList = new ArrayList<>();
-        Collections.addAll(regionsList, getResources().getStringArray(R.array.regionsArray));
+        String[] countries = getIntent().getExtras().getStringArray(getResources().getString(R.string.countriesExtra));
+        listView = (ListView) findViewById(R.id.countriesListView);
 
-        final ListView listView = (ListView) findViewById(R.id.regionsListView);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, regionsList);
+        assert countries != null;
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, countries);
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                urlString = String.format(getResources().getString(R.string.regionApiLocale), listView.getItemAtPosition(i));
                 try {
-                    new ContinentAsyncTask().execute(new URL(urlString));
+                    new CountryDetailAsyncTask().execute(new URL(String.format(getResources().getString(R.string.countryApiLocale), listView.getItemAtPosition(i).toString())));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -55,24 +52,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // TODO: Refactor to separate class (Not Important)
-    private static String[] parseJSONArrayToCountry(JSONArray jsonArray) {
-        String[] result;
-            try {
-                result = new String[jsonArray.length()];
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    result[i] = jsonArray.getJSONObject(i).getString("name");
-                }
-            } catch (JSONException e) {
-                result = new String[1];
-                result[0] = "Error";
-                e.printStackTrace();
-            }
-
+    private static String[] parseJSONArrayForDetails(JSONArray jsonArray) throws JSONException {
+        String[] result = new String[6];
+        JSONObject country = jsonArray.getJSONObject(0);
+        result[0] = country.getString("name");
+        result[1] = country.getString("capital");
+        result[2] = country.getString("region");
+        result[3] = country.getString("population");
+        result[4] = country.getString("area");
+        result[5] = country.getString("flag");
         return result;
     }
 
+    // TODO: Refactor to separate class (Not Important)
+    private static String[] passeJSONArrayForBorders(JSONArray jsonArray) throws JSONException {
+        JSONObject country = jsonArray.getJSONObject(0);
+        JSONArray bordersJSON = country.getJSONArray("borders");
+        String[] borders = new String[bordersJSON.length()];
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            borders[i] = bordersJSON.getString(i);
+        }
+
+        return borders;
+    }
+
     // TODO: Add progress bar for loading (Must)
-    private class ContinentAsyncTask extends AsyncTask<URL, Void, String> {
+    private class CountryDetailAsyncTask extends AsyncTask<URL, Void, String> {
 
         HttpsURLConnection connection;
         InputStream inputStream;
@@ -113,15 +119,17 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            String[] countries = new String[0];
+            String[] countryDetails = new String[0];
+            String[] countryBorders = new String[0];
             try {
-                countries = MainActivity.parseJSONArrayToCountry(new JSONArray(result));
+                countryDetails = CountiresActivity.parseJSONArrayForDetails(new JSONArray(result));
+                countryBorders = CountiresActivity.passeJSONArrayForBorders(new JSONArray(result));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            Intent intent = new Intent(MainActivity.this, CountiresActivity.class);
-            intent.putExtra(getResources().getString(R.string.countriesExtra), countries);
+            Intent intent = new Intent(CountiresActivity.this, CountryDetailsActivity.class);
+            intent.putExtra(getResources().getString(R.string.countryDetailExtra), countryDetails);
+            intent.putExtra(getResources().getString(R.string.countryBordersExtra), countryBorders);
             startActivity(intent);
         }
     }
