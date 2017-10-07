@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TextActivity" />
-        <activity android:name=".CountiresActivity" />
+        <activity android:name=".CountriesActivity" />
         <activity android:name=".CountryDetailsActivity"></activity>
     </application>
 

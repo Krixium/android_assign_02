@@ -22,7 +22,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class CountiresActivity extends AppCompatActivity {
+public class CountriesActivity extends AppCompatActivity {
 
     ListView listView;
 
@@ -122,12 +122,12 @@ public class CountiresActivity extends AppCompatActivity {
             String[] countryDetails = new String[0];
             String[] countryBorders = new String[0];
             try {
-                countryDetails = CountiresActivity.parseJSONArrayForDetails(new JSONArray(result));
-                countryBorders = CountiresActivity.passeJSONArrayForBorders(new JSONArray(result));
+                countryDetails = CountriesActivity.parseJSONArrayForDetails(new JSONArray(result));
+                countryBorders = CountriesActivity.passeJSONArrayForBorders(new JSONArray(result));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Intent intent = new Intent(CountiresActivity.this, CountryDetailsActivity.class);
+            Intent intent = new Intent(CountriesActivity.this, CountryDetailsActivity.class);
             intent.putExtra(getResources().getString(R.string.countryDetailExtra), countryDetails);
             intent.putExtra(getResources().getString(R.string.countryBordersExtra), countryBorders);
             startActivity(intent);

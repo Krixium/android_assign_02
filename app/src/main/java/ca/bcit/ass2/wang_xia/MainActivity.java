@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String urlString;
 
-    // TODO: Make code easier to read (Benny)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Collections.addAll(regionsList, getResources().getStringArray(R.array.regionsArray));
 
         final ListView listView = (ListView) findViewById(R.id.regionsListView);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, regionsList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, regionsList);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Intent intent = new Intent(MainActivity.this, CountiresActivity.class);
+            Intent intent = new Intent(MainActivity.this, CountriesActivity.class);
             intent.putExtra(getResources().getString(R.string.countriesExtra), countries);
             startActivity(intent);
         }

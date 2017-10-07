@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ca.bcit.ass2.wang_xia.CountiresActivity">
+    tools:context="ca.bcit.ass2.wang_xia.CountriesActivity">
 
     <ListView
         android:id="@+id/countriesListView"
