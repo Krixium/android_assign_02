@@ -42,8 +42,9 @@ public class CountriesActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String urlString = String.format(getResources().getString(R.string.countryApiLocale), listView.getItemAtPosition(i).toString());
                 try {
-                    new CountryDetailAsyncTask().execute(new URL(String.format(getResources().getString(R.string.countryApiLocale), listView.getItemAtPosition(i).toString())));
+                    new CountryDetailAsyncTask().execute(new URL(urlString));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -121,12 +122,14 @@ public class CountriesActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             String[] countryDetails = new String[0];
             String[] countryBorders = new String[0];
+            
             try {
                 countryDetails = CountriesActivity.parseJSONArrayForDetails(new JSONArray(result));
                 countryBorders = CountriesActivity.passeJSONArrayForBorders(new JSONArray(result));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
             Intent intent = new Intent(CountriesActivity.this, CountryDetailsActivity.class);
             intent.putExtra(getResources().getString(R.string.countryDetailExtra), countryDetails);
             intent.putExtra(getResources().getString(R.string.countryBordersExtra), countryBorders);
