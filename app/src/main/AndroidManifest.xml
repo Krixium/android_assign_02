@@ -19,9 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TextActivity" />
-        <activity android:name=".CountriesActivity" />
-        <activity android:name=".CountryDetailsActivity"></activity>
+        <activity
+            android:name=".CountriesActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CountryDetailsActivity"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

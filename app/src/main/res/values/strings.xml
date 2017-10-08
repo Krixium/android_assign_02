@@ -9,6 +9,8 @@
         <item>Oceania</item>
     </string-array>
 
+    <string name="flagDescription">Country Flag</string>
+
     <!--EXTRA NAMES-->
     <string name="countriesExtra">countries</string>
     <string name="countryDetailExtra">countryDetails</string>
@@ -17,4 +19,12 @@
     <!--API CALLS-->
     <string name="regionApiLocale">https://restcountries.eu/rest/v2/region/%s</string>
     <string name="countryApiLocale">https://restcountries.eu/rest/v2/name/%s?fullText=true</string>
+
+    <!--DISPLAY LOCALES-->
+    <string name="countryNameLocale">Country: %s</string>
+    <string name="countryCapitalLocale">Capital: %s</string>
+    <string name="countryRegionLocale">Region: %s</string>
+    <string name="countryPopulationLocale">Population: %s</string>
+    <string name="countryAreaLocale">Area: %s</string>
+    <string name="countryBorders">Borders: </string>
 </resources>
