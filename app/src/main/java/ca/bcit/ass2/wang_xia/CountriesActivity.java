@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import org.json.JSONArray;
 
@@ -18,21 +20,25 @@ public class CountriesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_countires);
+        setContentView(R.layout.activity_countries);
 
         final ListView listView;
         String[] countries;
         ArrayAdapter<String> arrayAdapter;
+        final ProgressBar progressBar;
 
         countries = getIntent().getExtras().getStringArray(getResources().getString(R.string.countriesExtra));
         listView = (ListView) findViewById(R.id.countriesListView);
         arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item,
                 countries != null ? countries : new String[0]);
+        progressBar = (ProgressBar) findViewById(R.id.CountryProgressBar);
+        progressBar.setVisibility(View.GONE);
 
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                progressBar.setVisibility(View.VISIBLE);
                 String urlString = String.format(getResources().getString(R.string.countryApiLocale),
                         listView.getItemAtPosition(i).toString());
                 urlString = DataParser.convertSpaces(urlString);
@@ -43,6 +49,16 @@ public class CountriesActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.CountryProgressBar);
+        if (progressBar.getVisibility() != View.GONE) {
+            Log.d("PATRICK YOUR", "progress bar is showing");
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     // TODO: Add progress bar for loading (Must)
