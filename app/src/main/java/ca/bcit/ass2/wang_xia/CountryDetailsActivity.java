@@ -30,7 +30,7 @@ public class CountryDetailsActivity extends AppCompatActivity {
         countryBorders = extras.getStringArray(getResources().getString(R.string.countryBordersExtra));
         Log.d("COUNTRY NAME", countryDetails[0]);
         Log.d("COUNTRY CAPITAL", countryDetails[1]);
-        Log.d("COUNTRY RESGION", countryDetails[2]);
+        Log.d("COUNTRY REGION", countryDetails[2]);
         Log.d("COUNTRY POPULATION", countryDetails[3]);
         Log.d("COUNTRY AREA", countryDetails[4]);
 
@@ -41,23 +41,21 @@ public class CountryDetailsActivity extends AppCompatActivity {
         countryAreaText = (TextView) findViewById(R.id.countryAreaText);
         countryBorderText = (TextView) findViewById(R.id.countryBordersText);
 
-        if (countryDetails != null) {
-            countryNameText.setText(String.format(
-                getResources().getString(R.string.countryNameLocale), countryDetails[0]
-            ));
-            countryCapitalText.setText(String.format(
-                getResources().getString(R.string.countryCapitalLocale), countryDetails[1]
-            ));
-            countryRegionText.setText(String.format(
-                getResources().getString(R.string.countryRegionLocale), countryDetails[2]
-            ));
-            countryPopulationText.setText(String.format(
-                getResources().getString(R.string.countryPopulationLocale), countryDetails[3]
-            ));
-            countryAreaText.setText(String.format(
-                getResources().getString(R.string.countryAreaLocale), countryDetails[4]
-            ));
-        }
+        countryNameText.setText(String.format(
+            getResources().getString(R.string.countryNameLocale), countryDetails[0]
+        ));
+        countryCapitalText.setText(String.format(
+            getResources().getString(R.string.countryCapitalLocale), countryDetails[1]
+        ));
+        countryRegionText.setText(String.format(
+            getResources().getString(R.string.countryRegionLocale), countryDetails[2]
+        ));
+        countryPopulationText.setText(String.format(
+            getResources().getString(R.string.countryPopulationLocale), countryDetails[3]
+        ));
+        countryAreaText.setText(String.format(
+            getResources().getString(R.string.countryAreaLocale), countryDetails[4]
+        ));
 
         if (countryBorders != null) {
             borders = getResources().getString(R.string.countryBorders);
