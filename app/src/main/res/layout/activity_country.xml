@@ -23,62 +23,41 @@
         style="@style/CountryDescText"
         app:layout_constraintTop_toBottomOf="@+id/countryFlagImage"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        />
-    <!--you did this >:( vvv -->
-    <!--android:layout_height="0dp"-->
-    <!--android:layout_width="0dp" -->
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/countryCapitalText"
         style="@style/CountryDescText"
         app:layout_constraintTop_toBottomOf="@+id/countryNameText"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/countryRegionText"
         style="@style/CountryDescText"
         app:layout_constraintTop_toBottomOf="@+id/countryCapitalText"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/countryPopulationText"
         style="@style/CountryDescText"
         app:layout_constraintTop_toBottomOf="@+id/countryRegionText"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/countryAreaText"
         style="@style/CountryDescText"
         app:layout_constraintTop_toBottomOf="@+id/countryPopulationText"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/countryBordersText"
         style="@style/CountryDescText"
         app:layout_constraintTop_toBottomOf="@+id/countryAreaText"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

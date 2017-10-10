@@ -49,19 +49,19 @@ public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
             InputStream inputStream = urlConnection.getInputStream();
             if (inputStream != null) {
                 BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inJustDecodeBounds = true;
+//                options.inJustDecodeBounds = true;
                 Bitmap bitmap;
                 // this will be null, but options will be set
-                BitmapFactory.decodeStream(inputStream, null, options);
-//                bitmap = BitmapFactory.decodeStream(inputStream);// simple, doesnt work tho
-                int maxHeight = parentContainer.get().getBottom();
+//                BitmapFactory.decodeStream(inputStream, null, options);
+                bitmap = BitmapFactory.decodeStream(inputStream);// simple, doesnt work tho
+//                int maxHeight = parentContainer.get().getBottom();
 //                int maxHeight = 200;
-                int maxWidth =  parentContainer.get().getRight();
+//                int maxWidth =  parentContainer.get().getRight();
 
-                options.inSampleSize = calculateInSampleSize(options, maxWidth, maxHeight);
-                options.inJustDecodeBounds = false;
-                // this uses optionss to ATTEMPT to generate a !null bitmap,
-                bitmap = BitmapFactory.decodeStream(inputStream, null, options);
+//                options.inSampleSize = calculateInSampleSize(options, maxWidth, maxHeight);
+//                options.inJustDecodeBounds = false;
+                  // this uses options to ATTEMPT to generate a !null bitmap,
+//                bitmap = BitmapFactory.decodeStream(inputStream, null, options);
 
 //                Log.d("IMAGEDOWNLOADER CLASS", bitmap.toString());
                 return bitmap;

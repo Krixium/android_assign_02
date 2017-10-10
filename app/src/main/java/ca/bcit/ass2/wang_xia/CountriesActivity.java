@@ -17,13 +17,14 @@ import java.net.URL;
 
 public class CountriesActivity extends AppCompatActivity {
 
+    private String[] countries;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_countries);
 
         final ListView listView;
-        String[] countries;
         ArrayAdapter<String> arrayAdapter;
         final ProgressBar progressBar;
 
@@ -52,7 +53,15 @@ public class CountriesActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putStringArray(getResources().getString(R.string.countriesExtra), countries);
+    }
+
+
+    @Override
+    protected void onResume() {
         super.onResume();
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.CountryProgressBar);
         if (progressBar.getVisibility() != View.GONE) {

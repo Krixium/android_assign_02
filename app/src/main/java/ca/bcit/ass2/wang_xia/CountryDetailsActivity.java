@@ -31,7 +31,7 @@ public class CountryDetailsActivity extends AppCompatActivity {
         countryBorders = extras.getStringArray(getResources().getString(R.string.countryBordersExtra));
         Log.d("COUNTRY NAME", countryDetails[0]);
         Log.d("COUNTRY CAPITAL", countryDetails[1]);
-        Log.d("COUNTRY RESGION", countryDetails[2]);
+        Log.d("COUNTRY REGION", countryDetails[2]);
         Log.d("COUNTRY POPULATION", countryDetails[3]);
         Log.d("COUNTRY AREA", countryDetails[4]);
 
