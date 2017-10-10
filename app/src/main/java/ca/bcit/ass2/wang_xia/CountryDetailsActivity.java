@@ -3,6 +3,7 @@ package ca.bcit.ass2.wang_xia;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class CountryDetailsActivity extends AppCompatActivity {
         countryRegionText = (TextView) findViewById(R.id.countryRegionText);
         countryPopulationText = (TextView) findViewById(R.id.countryPopulationText);
         countryAreaText = (TextView) findViewById(R.id.countryAreaText);
+        flagImage = (ImageView) findViewById(R.id.countryFlagImage);
         countryBorderText = (TextView) findViewById(R.id.countryBordersText);
 
         if (countryDetails != null) {
@@ -57,6 +59,9 @@ public class CountryDetailsActivity extends AppCompatActivity {
             countryAreaText.setText(String.format(
                 getResources().getString(R.string.countryAreaLocale), countryDetails[4]
             ));
+            //flag test          'v' pass in imgView ref    'v' pass in img URL
+            View root = findViewById(R.id.rootLayout);
+            new ImageDownloader( flagImage, root ).execute( countryDetails[5] );
         }
 
         if (countryBorders != null) {
