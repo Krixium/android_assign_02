@@ -20,11 +20,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CountriesActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".CountriesActivity" />
         <activity
-            android:name=".CountryDetailsActivity"
-            android:parentActivityName=".CountriesActivity"/>
+            android:name=".CountryDetailsActivity" />
     </application>
 
 </manifest>

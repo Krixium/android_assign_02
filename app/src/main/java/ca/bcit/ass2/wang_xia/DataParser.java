@@ -1,5 +1,10 @@
 package ca.bcit.ass2.wang_xia;
 
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PictureDrawable;
+
+import com.caverock.androidsvg.SVG;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -45,6 +49,18 @@ class DataParser {
         }
 
         return result;
+    }
+
+    static Drawable GETDrawable(String str) {
+        try {
+            URL imgUrl = new URL(str);
+            HttpsURLConnection connection = (HttpsURLConnection) imgUrl.openConnection();
+            SVG svg = SVG.getFromInputStream(connection.getInputStream());
+            return new PictureDrawable(svg.renderToPicture());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private static String parseInputStream(InputStream inputStream) {
