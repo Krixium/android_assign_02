@@ -11,7 +11,6 @@ public class CountryDetailsActivity extends AppCompatActivity {
 
     ImageView flagImage;
 
-    // TODO: Visualize Data (Must)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
