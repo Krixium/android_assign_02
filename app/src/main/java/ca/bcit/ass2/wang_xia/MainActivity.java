@@ -2,14 +2,19 @@ package ca.bcit.ass2.wang_xia;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.ShareActionProvider;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 
@@ -19,6 +24,39 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    //will this die?
+    private ShareActionProvider shareActionProvider;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_share);
+        shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+        setSharedActionIntent("this is for my lab, please understand");
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_request_info:
+                Intent intent = new Intent(this, InfoRequestActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    private void setSharedActionIntent(String text) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        shareActionProvider.setShareIntent(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -60,12 +100,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.MainProgressBar);
         if (progressBar.getVisibility() != View.GONE) {
-            Log.d("PATRICK YOUR", "progress bar is showing");
             progressBar.setVisibility(View.GONE);
         }
     }
 
-    // TODO: Add progress bar for loading (Must)
     private class ContinentAsyncTask extends AsyncTask<URL, Void, String> {
 
         @Override

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Wang_Xia</string>
+    <string name="names">Benny Wang, Alex Xia</string>
+    <string name="info_request_title">My device</string>
+    <string name="action_share">share</string>
 
     <string-array name="regionsArray">
         <item>Africa</item>

@@ -19,10 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".CountriesActivity" />
-        <activity
-            android:name=".CountryDetailsActivity" />
+        <activity android:name=".CountriesActivity" />
+        <activity android:name=".CountryDetailsActivity" />
+        <activity android:name=".InfoRequestActivity"
+            android:label="@string/info_request_title"
+            android:parentActivityName=".MainActivity"
+            />
     </application>
 
 </manifest>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.bcit.ass2.wang_xia.InfoRequestActivity">
+
+    <include layout="@layout/toolbar_main"  android:id="@+id/toolBar"/>
+
+    <TextView
+        android:id="@+id/textViewManufacturer"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/centeredTextViews"
+        />
+
+    <TextView
+        android:id="@+id/textViewModel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewManufacturer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/centeredTextViews"
+        />
+
+    <TextView
+        android:id="@+id/textViewSdkLevel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewModel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/centeredTextViews"
+        />
+
+    <TextView
+        android:id="@+id/textViewReleaseVersion"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSdkLevel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/centeredTextViews"
+        />
+
+    <TextView
+        android:id="@+id/textViewSerialNumber"
+        app:layout_constraintTop_toBottomOf="@+id/textViewReleaseVersion"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/centeredTextViews"
+        />
+</android.support.constraint.ConstraintLayout>
