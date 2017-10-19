@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -60,12 +59,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.MainProgressBar);
         if (progressBar.getVisibility() != View.GONE) {
-            Log.d("PATRICK YOUR", "progress bar is showing");
             progressBar.setVisibility(View.GONE);
         }
     }
 
-    // TODO: Add progress bar for loading (Must)
     private class ContinentAsyncTask extends AsyncTask<URL, Void, String> {
 
         @Override

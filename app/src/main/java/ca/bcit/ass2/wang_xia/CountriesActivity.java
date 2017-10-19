@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -53,24 +52,14 @@ public class CountriesActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-
-        savedInstanceState.putStringArray(getResources().getString(R.string.countriesExtra), countries);
-    }
-
-
-    @Override
     protected void onResume() {
         super.onResume();
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.CountryProgressBar);
         if (progressBar.getVisibility() != View.GONE) {
-            Log.d("PATRICK YOUR", "progress bar is showing");
             progressBar.setVisibility(View.GONE);
         }
     }
 
-    // TODO: Add progress bar for loading (Must)
     private class CountryDetailAsyncTask extends AsyncTask<URL, Void, String> {
 
         @Override

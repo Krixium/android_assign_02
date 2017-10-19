@@ -22,4 +22,9 @@
         <item name="android:indeterminateOnly">true</item>
         <item name="android:keepScreenOn">true</item>
     </style>
+
+    <style name="listViews">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
 </resources>

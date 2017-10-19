@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Wang_Xia</string>
+    <string name="names">Benny Wang, Alex Xia</string>
 
     <string-array name="regionsArray">
         <item>Africa</item>
