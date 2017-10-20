@@ -28,4 +28,20 @@
     <string name="countryPopulationLocale">Population: %s</string>
     <string name="countryAreaLocale">Area: %s</string>
     <string name="countryBorders">Borders: </string>
+
+    <!--DEVICE INFO LOCALES-->
+    <string name="manufacturerLocale">Manufacturer: %s</string>
+    <string name="modelLocale">Model: %s</string>
+    <string name="versionLocale">Version: %d</string>
+    <string name="versionReleaseLocale">Version Release: %s</string>
+    <string name="serialNumberLocale">Serial Number: %s</string>
+
+    <!--MENU ITEMS-->
+    <string name="shareMenuItem">Share</string>
+    <string name="deviceMenuItem">My Device</string>
+
+    <!--SHARE TEMPLATE-->
+    <string name="sharePrompt">Share using:</string>
+    <string name="shareSubject">Hey, what region is your favourite.</string>
+    <string name="shareBodyHeader">Pick one:</string>
 </resources>

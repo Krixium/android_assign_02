@@ -24,9 +24,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //    compile files('C:/Users/Alex/Desktop/3717/Asn2/Asn2_bennyBranch_svgs/app/libs/androidsvg-1.2.1.jar')
+    compile files('libs/androidsvg-1.2.1.jar')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-//    compile files('C:/Users/Alex/Desktop/3717/Asn2/Asn2_bennyBranch_svgs/app/libs/androidsvg-1.2.1.jar')
-    compile files('libs/androidsvg-1.2.1.jar')
 }
