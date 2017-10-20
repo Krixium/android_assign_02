@@ -19,8 +19,6 @@ public class DeviceInfoActivity extends AppCompatActivity {
         TextView versionReleaseTextView = (TextView) findViewById(R.id.versionReleaseText);
         TextView serialNumberTextView = (TextView) findViewById(R.id.serialNumberText);
 
-        Bundle info = getIntent().getExtras();
-
         manufacturerTextView.setText(String.format(
                 getResources().getString(R.string.manufacturerLocale), Build.MANUFACTURER
         ));

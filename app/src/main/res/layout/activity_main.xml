@@ -8,8 +8,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/mainToolbar"
-        style="@style/toolbar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        style="@style/toolbar" />
 
     <ProgressBar
         android:id="@+id/MainProgressBar"
